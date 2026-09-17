@@ -140,7 +140,8 @@ def move():
                 vector(0, 5),
                 vector(0, -5),
             ]
-            plan = choice(options)
+            valid_options = [opt for opt in options if valid(point + opt)]
+            plan = min(valid_options, key=lambda opt: abs((point + opt) - pacman))
             course.x = plan.x
             course.y = plan.y
 
